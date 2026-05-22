@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto premiado sobre a sustentabilidade no agronegócio e a preservação ambiental.">
+    <title>Agro Forte, Futuro Sustentável | Edição 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="logo">
+            <h1>🌱 EcoAgro<span class="highlight">26</span></h1>
+        </div>
+        <nav aria-label="Navegação Principal">
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#inovacao">Inovação</a></li>
+            </ul>
+        </nav>
+        <button id="theme-switcher" aria-label="Alternar modo escuro" class="btn-icon">
+            🌙 Modo Escuro
+        </button>
+    </header>
 
+    <main>
+        <section id="hero" class="hero-section fade-in">
+            <div class="hero-content">
+                <h2>O Equilíbrio Perfeito entre <span class="highlight">Produção e Natureza</span></h2>
+                <p>Tecnologia e respeito à terra caminhando juntos para alimentar o amanhã sem esgotar o hoje.</p>
+                <a href="#impacto" class="btn-primary pulse-anim">Explorar o Futuro</a>
+            </div>
+        </section>
+
+        <section id="impacto" class="grid-section fade-in">
+            <div class="section-header">
+                <h2>O Desafio Global</h2>
+                <p>Nossas ações no campo refletem no clima do mundo inteiro.</p>
+            </div>
+            <div class="grid-container">
+                <article class="feature-card glass-card">
+                    <div class="card-icon">🌍</div>
+                    <h3>Clima em Foco</h3>
+                    <p>Redução da pegada de carbono através de agricultura de precisão e biocombustíveis.</p>
+                </article>
+                <article class="feature-card glass-card">
+                    <div class="card-icon">💧</div>
+                    <h3>Água Inteligente</h3>
+                    <p>Sistemas de gotejamento guiados por IA que reduzem o desperdício em até 60%.</p>
+                </article>
+                <article class="feature-card glass-card">
+                    <div class="card-icon">🐛</div>
+                    <h3>Controle Biológico</h3>
+                    <p>Substituição de defensivos químicos por predadores naturais, mantendo a biodiversidade.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="inovacao" class="action-section fade-in">
+            <div class="glass-panel">
+                <h2>Faça Parte da Revolução Verde</h2>
+                <p>Receba nosso manifesto 2026 sobre práticas ESG no agronegócio.</p>
+                <form id="premium-form" class="modern-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-name" required placeholder=" ">
+                        <label for="user-name">Nome Completo</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="user-email" required placeholder=" ">
+                        <label for="user-email">E-mail Profissional</label>
+                    </div>
+                    <button type="submit" class="btn-primary">Baixar Manifesto</button>
+                    <div id="status-message" class="status-box hidden" role="alert"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="modern-footer">
+        <p>&copy; 2026 EcoAgro. Desenvolvido para o Futuro. 🌿</p>
+    </footer>
+</body>
+</html>
