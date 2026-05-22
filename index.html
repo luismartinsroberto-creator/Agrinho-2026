@@ -3,83 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projeto premiado sobre a sustentabilidade no agronegócio e a preservação ambiental.">
-    <title>Agro Forte, Futuro Sustentável | Edição 2026</title>
+    <meta name="description" content="Agro Forte, Futuro Sustentável: O legado da Agricultura Tropical em 2026.">
+    <title>Agro 2026 | Futuro Sustentável</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="glass-header">
+    <header class="main-header">
         <div class="logo">
-            <h1>🌱 EcoAgro<span class="highlight">26</span></h1>
+            <h1>🌱 Agro<span class="highlight">26</span></h1>
         </div>
-        <nav aria-label="Navegação Principal">
+        <nav aria-label="Menu de Navegação">
             <ul class="nav-links">
-                <li><a href="#hero">Início</a></li>
-                <li><a href="#impacto">Impacto</a></li>
-                <li><a href="#inovacao">Inovação</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#dados">Cenário 2026</a></li>
+                <li><a href="#interacao">Calculadora</a></li>
+                <li><a href="#contato">Participe</a></li>
             </ul>
         </nav>
-        <button id="theme-switcher" aria-label="Alternar modo escuro" class="btn-icon">
-            🌙 Modo Escuro
-        </button>
+        <button id="theme-switcher" class="btn-icon" aria-label="Alternar Tema">🌙 Escuro</button>
     </header>
 
     <main>
-        <section id="hero" class="hero-section fade-in">
+        <section id="inicio" class="hero fade-in">
             <div class="hero-content">
-                <h2>O Equilíbrio Perfeito entre <span class="highlight">Produção e Natureza</span></h2>
-                <p>Tecnologia e respeito à terra caminhando juntos para alimentar o amanhã sem esgotar o hoje.</p>
-                <a href="#impacto" class="btn-primary pulse-anim">Explorar o Futuro</a>
+                <h2>O Legado da <span class="highlight">Agricultura Tropical</span></h2>
+                <p>Pós-COP30, o Brasil consolida o equilíbrio perfeito: alimentando o mundo com biotecnologia e preservando a natureza.</p>
+                <a href="#dados" class="btn-primary">Explorar Dados</a>
             </div>
         </section>
 
-        <section id="impacto" class="grid-section fade-in">
-            <div class="section-header">
-                <h2>O Desafio Global</h2>
-                <p>Nossas ações no campo refletem no clima do mundo inteiro.</p>
+        <section id="dados" class="data-section fade-in">
+            <div class="section-title">
+                <h2>Cenário Atual: Produtividade e Preservação</h2>
+                <p>Números que provam que o futuro já começou no campo brasileiro.</p>
             </div>
-            <div class="grid-container">
-                <article class="feature-card glass-card">
-                    <div class="card-icon">🌍</div>
-                    <h3>Clima em Foco</h3>
-                    <p>Redução da pegada de carbono através de agricultura de precisão e biocombustíveis.</p>
+            <div class="cards-grid">
+                <article class="data-card">
+                    <div class="icon">🌾</div>
+                    <h3>353 Milhões</h3>
+                    <p>De toneladas de grãos projetadas para a safra 25/26, utilizando menos área através da agricultura de precisão e recuperação de pastagens.</p>
                 </article>
-                <article class="feature-card glass-card">
-                    <div class="card-icon">💧</div>
-                    <h3>Água Inteligente</h3>
-                    <p>Sistemas de gotejamento guiados por IA que reduzem o desperdício em até 60%.</p>
+                <article class="data-card">
+                    <div class="icon">🌳</div>
+                    <h3>66,3%</h3>
+                    <p>Do território nacional mantido com vegetação nativa. Somos o país que mais produz e mais preserva no cinturão tropical do planeta.</p>
                 </article>
-                <article class="feature-card glass-card">
-                    <div class="card-icon">🐛</div>
-                    <h3>Controle Biológico</h3>
-                    <p>Substituição de defensivos químicos por predadores naturais, mantendo a biodiversidade.</p>
+                <article class="data-card">
+                    <div class="icon">🦠</div>
+                    <h3>Bioinsumos</h3>
+                    <p>Substituição acelerada de químicos por defesas biológicas, liderando o mercado global de controle natural de pragas em 2026.</p>
                 </article>
             </div>
         </section>
 
-        <section id="inovacao" class="action-section fade-in">
-            <div class="glass-panel">
-                <h2>Faça Parte da Revolução Verde</h2>
-                <p>Receba nosso manifesto 2026 sobre práticas ESG no agronegócio.</p>
-                <form id="premium-form" class="modern-form" novalidate>
-                    <div class="input-group">
-                        <input type="text" id="user-name" required placeholder=" ">
-                        <label for="user-name">Nome Completo</label>
+        <section id="interacao" class="interactive-section fade-in">
+            <div class="calculator-container">
+                <h2>Calculadora de Impacto Positivo</h2>
+                <p>Simule os benefícios ao adotar o Plantio Direto e a Irrigação Inteligente (IoT) em sua propriedade.</p>
+                
+                <div class="slider-group">
+                    <label for="hectares">Tamanho da Propriedade: <span id="hectares-display" class="highlight">500</span> Hectares</label>
+                    <input type="range" id="hectares" min="10" max="5000" step="10" value="500">
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-box">
+                        <span class="result-value" id="water-saved">0</span>
+                        <span class="result-label">Litros de Água Economizados / Ano</span>
                     </div>
-                    <div class="input-group">
-                        <input type="email" id="user-email" required placeholder=" ">
-                        <label for="user-email">E-mail Profissional</label>
+                    <div class="result-box">
+                        <span class="result-value" id="carbon-saved">0</span>
+                        <span class="result-label">Ton. de Carbono Sequestradas / Ano</span>
                     </div>
-                    <button type="submit" class="btn-primary">Baixar Manifesto</button>
-                    <div id="status-message" class="status-box hidden" role="alert"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section fade-in">
+            <div class="form-container">
+                <h2>Receba o Relatório ESG 2026</h2>
+                <form id="lead-form" novalidate>
+                    <div class="input-wrapper">
+                        <input type="text" id="nome" required placeholder="Seu nome completo">
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" required placeholder="Seu melhor e-mail corporativo">
+                    </div>
+                    <button type="submit" class="btn-primary">Baixar Relatório Mapeamento Agro</button>
+                    <div id="form-feedback" class="feedback-msg hidden" role="alert"></div>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer class="modern-footer">
-        <p>&copy; 2026 EcoAgro. Desenvolvido para o Futuro. 🌿</p>
+    <footer>
+        <p>&copy; 2026 Agro Forte. Desenvolvido com inovação sustentável.</p>
     </footer>
 </body>
 </html>

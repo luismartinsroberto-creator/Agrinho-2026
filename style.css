@@ -1,59 +1,58 @@
-/* ================= Variáveis de Tema Avançadas ================= */
+/* Variáveis de Tema Global */
 :root {
-    --color-bg: #f8faf8;
-    --color-text: #1a2e1a;
-    --color-primary: #2d8a4e;
-    --color-primary-hover: #1e6135;
-    --color-glass: rgba(255, 255, 255, 0.7);
-    --color-glass-border: rgba(255, 255, 255, 0.3);
-    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --bg-color: #f4f9f4;
+    --text-color: #1a2f1a;
+    --primary-color: #2b8c4c;
+    --primary-hover: #1e6b37;
+    --card-bg: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --border-color: #e0e0e0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="dark"] {
-    --color-bg: #0f1711;
-    --color-text: #e8f0e8;
-    --color-primary: #4ade80;
-    --color-primary-hover: #22c55e;
-    --color-glass: rgba(15, 23, 17, 0.7);
-    --color-glass-border: rgba(255, 255, 255, 0.05);
-    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --bg-color: #0b140b;
+    --text-color: #e2ece2;
+    --primary-color: #4ade80;
+    --primary-hover: #22c55e;
+    --card-bg: #142414;
+    --glass-bg: rgba(20, 36, 20, 0.9);
+    --border-color: #2a3f2a;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* ================= Reset e Tipografia ================= */
+/* Reset Básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, sans-serif;
-    scroll-behavior: smooth; /* Rolagem suave nativa */
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     transition: background-color 0.4s ease, color 0.4s ease;
-    overflow-x: hidden;
 }
 
 .highlight {
-    color: var(--color-primary);
-    font-weight: 800;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
-/* ================= Glassmorphism Header ================= */
-.glass-header {
-    position: fixed;
+/* Header */
+.main-header {
+    position: sticky;
     top: 0;
-    width: 100%;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: var(--color-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--color-glass-border);
-    z-index: 1000;
+    padding: 1.2rem 5%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-links {
@@ -64,202 +63,235 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--text-color);
     font-weight: 600;
-    position: relative;
+    transition: color 0.3s;
 }
 
-/* Efeito de sublinhado animado no hover */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--color-primary);
-    transition: width 0.3s ease;
+.nav-links a:hover {
+    color: var(--primary-color);
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+.btn-icon {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-/* ================= Hero Section ================= */
-.hero-section {
-    height: 100vh;
+.btn-icon:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at center, transparent 0%, var(--color-bg) 100%), 
-                url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920&auto=format&fit=crop') center/cover;
+    background: linear-gradient(rgba(0, 10, 0, 0.7), rgba(0, 10, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=1920&auto=format&fit=crop') center/cover;
+    color: #fff;
     padding: 0 5%;
 }
 
 .hero-content {
     max-width: 800px;
-    background: var(--color-glass);
-    padding: 3rem;
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--color-glass-border);
-    box-shadow: var(--shadow-soft);
 }
 
-.hero-content h2 { font-size: 3.5rem; margin-bottom: 1rem; }
-.hero-content p { font-size: 1.2rem; margin-bottom: 2rem; }
-
-/* ================= CSS Grid Inteligente ================= */
-.grid-section {
-    padding: 6rem 5%;
+.hero h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
 }
 
-.section-header {
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+/* Seções Padrões */
+section {
+    padding: 5rem 5%;
+}
+
+.section-title {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
-.grid-container {
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* Grid de Dados */
+.cards-grid {
     display: grid;
-    /* Grid que se adapta sozinho ao tamanho da tela */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-.glass-card {
-    background: var(--color-glass);
-    padding: 2.5rem;
-    border-radius: 16px;
-    border: 1px solid var(--color-glass-border);
-    box-shadow: var(--shadow-soft);
+.data-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
 }
 
-.glass-card:hover {
+.data-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(45, 138, 78, 0.2);
+    border-color: var(--primary-color);
 }
 
-.card-icon {
-    font-size: 3rem;
+.data-card .icon {
+    font-size: 3.5rem;
     margin-bottom: 1rem;
 }
 
-/* ================= Formulário Premium (Material Design flutuante) ================= */
-.action-section {
-    padding: 5rem 5%;
-    display: flex;
-    justify-content: center;
+.data-card h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-.glass-panel {
-    background: var(--color-glass);
-    padding: 4rem;
-    border-radius: 20px;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid var(--color-glass-border);
+/* Calculadora Interativa */
+.calculator-container {
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.slider-group {
+    margin: 3rem 0;
+}
+
+.slider-group label {
+    display: block;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+input[type=range] {
     width: 100%;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.result-box {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px dashed var(--primary-color);
+}
+
+.result-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Formulário de Contato */
+.form-container {
     max-width: 600px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.modern-form { margin-top: 2rem; }
-
-.input-group {
-    position: relative;
-    margin-bottom: 2rem;
-    text-align: left;
+.input-wrapper {
+    margin-bottom: 1.5rem;
 }
 
-.input-group input {
+.input-wrapper input {
     width: 100%;
-    padding: 12px 0;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
     font-size: 1rem;
-    color: var(--color-text);
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid #aaa;
     outline: none;
     transition: border-color 0.3s;
 }
 
-.input-group label {
-    position: absolute;
-    top: 12px;
-    left: 0;
-    font-size: 1rem;
-    color: #888;
-    pointer-events: none;
-    transition: 0.3s ease all;
+.input-wrapper input:focus {
+    border-color: var(--primary-color);
 }
 
-/* Magia do label flutuante */
-.input-group input:focus,
-.input-group input:not(:placeholder-shown) {
-    border-bottom-color: var(--color-primary);
-}
-
-.input-group input:focus ~ label,
-.input-group input:not(:placeholder-shown) ~ label {
-    top: -20px;
-    font-size: 0.85rem;
-    color: var(--color-primary);
+.feedback-msg {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
     font-weight: bold;
 }
 
-/* ================= Botões e Utilitários ================= */
-.btn-primary {
-    background: var(--color-primary);
-    color: #fff;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s, transform 0.2s;
-}
+.feedback-msg.success { background-color: #dcfce7; color: #166534; }
+.feedback-msg.error { background-color: #fee2e2; color: #991b1b; }
+.hidden { display: none; }
 
-.btn-primary:hover {
-    background: var(--color-primary-hover);
-    transform: scale(1.05);
-}
-
-.btn-icon {
-    background: transparent;
-    border: 1px solid var(--color-text);
-    color: var(--color-text);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Animações nativas */
+/* Animações de Scroll (JS ativado) */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-in.visible {
+.fade-in.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.hidden { display: none; }
-.status-box { margin-top: 15px; padding: 10px; border-radius: 8px; font-weight: bold; }
-.success { background: rgba(74, 222, 128, 0.2); color: var(--color-primary); }
-.error { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+}
 
-.modern-footer { text-align: center; padding: 2rem; border-top: 1px solid var(--color-glass-border); }
-
-/* Responsividade Automática Adicional */
+/* Responsividade */
 @media (max-width: 768px) {
-    .hero-content h2 { font-size: 2.2rem; }
-    .nav-links { display: none; /* Em um projeto real, aqui entraria um menu hambúrguer */ }
-    .glass-panel { padding: 2rem; }
+    .nav-links { display: none; }
+    .hero h2 { font-size: 2.5rem; }
+    .results-grid { grid-template-columns: 1fr; }
 }

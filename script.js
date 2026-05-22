@@ -1,90 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. GESTÃO DE TEMA COM LOCAL STORAGE (Memória do navegador)
+    // --- 1. MODO ESCURO COM LOCALSTORAGE ---
     const themeSwitcher = document.getElementById('theme-switcher');
-    const htmlElement = document.documentElement;
+    const rootHtml = document.documentElement;
     
-    // Verifica se o usuário já tinha uma preferência salva anteriormente
-    const savedTheme = localStorage.getItem('ecoAgroTheme') || 'light';
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateButtonText(savedTheme);
+    // Checa preferência salva
+    const currentTheme = localStorage.getItem('agroTheme') || 'light';
+    rootHtml.setAttribute('data-theme', currentTheme);
+    updateThemeButtonText(currentTheme);
 
     themeSwitcher.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        let theme = rootHtml.getAttribute('data-theme');
+        let newTheme = theme === 'light' ? 'dark' : 'light';
         
-        htmlElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('ecoAgroTheme', newTheme); // Salva no navegador
-        updateButtonText(newTheme);
+        rootHtml.setAttribute('data-theme', newTheme);
+        localStorage.setItem('agroTheme', newTheme);
+        updateThemeButtonText(newTheme);
     });
 
-    function updateButtonText(theme) {
-        themeSwitcher.textContent = theme === 'light' ? '🌙 Modo Escuro' : '☀️ Modo Claro';
+    function updateThemeButtonText(theme) {
+        themeSwitcher.textContent = theme === 'light' ? '🌙 Escuro' : '☀️ Claro';
     }
 
-    // 2. INTERSECTION OBSERVER (Animações ao rolar a página)
-    // Isso é o que difere um site amador de um profissional em 2026
+
+    // --- 2. CALCULADORA DE IMPACTO INTERATIVA (Dados 2026) ---
+    const hectaresInput = document.getElementById('hectares');
+    const hectaresDisplay = document.getElementById('hectares-display');
+    const waterSavedDisplay = document.getElementById('water-saved');
+    const carbonSavedDisplay = document.getElementById('carbon-saved');
+
+    // Função que calcula baseada na tecnologia agrícola de 2026
+    function calculateImpact(hectares) {
+        // Economia de água usando IoT e gotejamento inteligente (Aprox. 12.500 Litros/ha/ano)
+        const waterSaved = hectares * 12500; 
+        // Sequestro de carbono através de Plantio Direto e Bioinsumos (Aprox. 3.2 Toneladas/ha/ano)
+        const carbonSaved = hectares * 3.2; 
+
+        // Formatação para facilitar a leitura
+        waterSavedDisplay.textContent = waterSaved.toLocaleString('pt-BR');
+        carbonSavedDisplay.textContent = carbonSaved.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+    }
+
+    // Ouve a interação de arrastar a barra (Slider) em tempo real
+    hectaresInput.addEventListener('input', (e) => {
+        const value = e.target.value;
+        hectaresDisplay.textContent = value;
+        calculateImpact(value);
+    });
+
+    // Inicia os valores padrão ao carregar a página
+    calculateImpact(hectaresInput.value);
+
+
+    // --- 3. ANIMAÇÕES DE ROLAGEM COM INTERSECTION OBSERVER ---
+    const fadeElements = document.querySelectorAll('.fade-in');
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.15 // Dispara quando 15% do elemento estiver visível na tela
-    };
-
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Adiciona a classe que faz a animação de fade-in acontecer
-                entry.target.classList.add('visible');
-                // Para de observar depois que já apareceu (melhora performance)
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Seleciona todos os elementos com a classe fade-in e os observa
-    document.querySelectorAll('.fade-in').forEach(element => {
-        scrollObserver.observe(element);
-    });
-
-    // 3. VALIDAÇÃO DE FORMULÁRIO CUSTOMIZADA (Sem o `alert()` padrão)
-    const premiumForm = document.getElementById('premium-form');
-    const statusMessage = document.getElementById('status-message');
-
-    premiumForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Impede o recarregamento
-        
-        const name = document.getElementById('user-name').value.trim();
-        const email = document.getElementById('user-email').value.trim();
-        
-        // Reset de classes
-        statusMessage.className = 'status-box'; 
-
-        // Validação Inteligente
-        if (name.length < 3) {
-            showStatus('O nome precisa ter pelo menos 3 caracteres.', 'error');
-            return;
-        }
-
-        // Expressão regular (Regex) para validar o formato de email de forma robusta
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showStatus('Por favor, insira um e-mail válido (ex: seu@email.com).', 'error');
-            return;
-        }
-
-        // Sucesso
-        showStatus(`Pronto, ${name.split(' ')[0]}! Manifesto enviado para ${email}.`, 'success');
-        premiumForm.reset(); // Limpa os campos
-    });
-
-    function showStatus(message, type) {
-        statusMessage.textContent = message;
-        statusMessage.classList.add(type);
-        statusMessage.classList.remove('hidden');
-        
-        // Esconde a mensagem automaticamente após 5 segundos
-        setTimeout(() => {
-            statusMessage.classList.add('hidden');
-        }, 5000);
-    }
-});
+        threshold: 0.15 // Dispara a animação quando
